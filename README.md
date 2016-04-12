@@ -179,8 +179,8 @@
     var fullName = 'Bob ' + this.lastName;
     ```
 
-  - Strings longer than 80 characters should be written across multiple lines using string concatenation.
-  - Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40)
+  - 字符串长度超过80时应该用连接符让字符串多行表示.
+  - 注意:如果过度使用,长字符串的连接会影响性能.[jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40)
 
     ```javascript
     // bad
@@ -198,7 +198,7 @@
       'with this, you would get nowhere fast.';
     ```
 
-  - When programmatically building up a string, use Array#join instead of string concatenation.
+  - 如果用代码生成字符串,请使用`join`而不是字符串连接符.
 
     ```javascript
     var items;
@@ -242,31 +242,31 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
-## Functions
+## 函数
 
-  - Function expressions:
+  - 函数写法:
 
     ```javascript
-    // anonymous function expression
+    // 匿名函数写法(anonymous function expression)
     var anonymous = function() {
       return true;
     };
 
-    // named function expression
+    // 普通函数写法(named function expression)
     var named = function named() {
       return true;
     };
 
-    // immediately-invoked function expression (IIFE)
+    //立即执行函数写法 (immediately-invoked function expression (IIFE))
     (function() {
       console.log('Welcome to the Internet. Please follow me.');
     })();
     ```
 
-  - Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead.
+  - 不要在没有函数的块(block)(如if,while等等)内部定义函数.应该将函数分配给一个变量.
 
     ```javascript
     // bad
@@ -285,7 +285,7 @@
     }
     ```
 
-  - Never name a parameter `arguments`, this will take precedence over the `arguments` object that is given to every function scope.
+  - 不要将参数命名为`arguments`,因为这样的参数会优先于给每个函数作用域的`arguments`.
 
     ```javascript
     // bad
@@ -299,13 +299,13 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 
-## Properties
+## 属性(Properties)
 
-  - Use dot notation when accessing properties.
+  - 访问属性时使用`.`符号
 
     ```javascript
     var luke = {
@@ -320,7 +320,7 @@
     var isJedi = luke.jedi;
     ```
 
-  - Use subscript notation `[]` when accessing properties with a variable.
+  - 当用变量访问属性时使用`[]`符号.
 
     ```javascript
     var luke = {
@@ -335,12 +335,12 @@
     var isJedi = getProp('jedi');
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
-## Variables
+## 变量(Variables)
 
-  - Always use `var` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
+  - 永远使用`var`来定义变量.不这样做的话它会存在于全局空间中.我们希望尽量避免污染全局空间.这是地球超人警告我们的.
 
     ```javascript
     // bad
@@ -350,7 +350,7 @@
     var superPower = new SuperPower();
     ```
 
-  - Declare each variable on a newline, with a `var` before each of them.
+  - 每一行定义一个变量,并且每一行前面都要有`var`.
 
     ```javascript
     // bad
@@ -364,7 +364,7 @@
      var dragonball = 'z';
     ```
 
-  - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
+  - 最后才定义没有赋初始值的变量.当这些变量可能取决于之前的某个值时会非常有用.
 
     ```javascript
     // bad
@@ -382,7 +382,7 @@
     var i;
     ```
 
-  - Avoid redundant variable names, use `Object` instead.
+  - 避免冗余的变量名,可以用`object`来做到同样的事情.
 
     ```javascript
 
@@ -399,7 +399,7 @@
     };
     ```
 
-  - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
+  - .Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
 
     ```javascript
     // bad
@@ -492,7 +492,7 @@
   ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 ## Callbacks
 
@@ -560,7 +560,7 @@
   }
   ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Try catch
@@ -607,7 +607,7 @@
   }
   ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 ## Hoisting
 
@@ -695,7 +695,7 @@
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 
@@ -744,7 +744,7 @@
 
   - For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Blocks
@@ -773,7 +773,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Comments
@@ -866,7 +866,7 @@
     }
   ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Whitespace
@@ -981,7 +981,7 @@
         .call(tron.led);
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 ## Commas
 
@@ -1033,7 +1033,7 @@
     ];
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Semicolons
@@ -1060,7 +1060,7 @@
     })();
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Type Casting & Coercion
@@ -1143,7 +1143,7 @@
     var hasAge = !!age;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Naming Conventions
@@ -1256,7 +1256,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 
 ## Accessors
@@ -1310,7 +1310,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 ## Constructors
 
@@ -1394,7 +1394,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 **Books**
 
@@ -1426,7 +1426,7 @@
   - [Dustin Diaz](http://dustindiaz.com/)
   - [nettuts](http://net.tutsplus.com/?s=javascript)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 ## The JavaScript Style Guide Guide
 
@@ -1462,6 +1462,6 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ 回到顶部](#table-of-contents)**
 
 # };
