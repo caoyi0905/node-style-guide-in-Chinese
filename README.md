@@ -16,17 +16,17 @@
 
 ## Table of Contents
 
-  1. [类型](#types)
-  1. [对象](#objects)
-  1. [数组](#arrays)
-  1. [字符串](#strings)
-  1. [函数](#functions)
-  1. [属性(Properties)](#properties)
-  1. [变量(Variables)](#variables)
-  1. [引用(Requires)](#requires)
-  1. [回调函数](#callbacks)
-  1. [Try-catch](#try-catch)
-  1. [变量声明提升(Hoisting)](#hoisting)
+  1. [类型](#类型)
+  1. [对象](#对象)
+  1. [数组](#数组)
+  1. [字符串](#字符串)
+  1. [函数](#函数)
+  1. [属性(Properties)](#属性properties)
+  1. [变量(Variables)](#变量variables)
+  1. [引用(Requires)](#引用requires)
+  1. [回调函数(callback)](#回调函数callback)
+  1. [抛/捕获异常(Try catch)](#抛捕获异常try-catch)
+  1. [变量声明提升(Hoisting)](#变量声明提升hoisting)
   1. [Conditional Expressions & Equality](#conditional-expressions--equality)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
@@ -399,7 +399,7 @@
     };
     ```
 
-  - .Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
+  - 在作用域的最一开始就定义变量.这会避免一些由于变量提升导致的问题.
 
     ```javascript
     // bad
@@ -457,12 +457,14 @@
     }
     ```
 
-## Requires
+**[⬆ 回到顶部](#table-of-contents)**
 
-  - Organize your node requires in the following order:
-      - core modules
-      - npm modules
-      - others
+## 引用(Requires)
+
+  - 像这样的顺序引入你的node的requires:
+      - 核心模块
+      - npm模块
+      - 其他
 
     ```javascript
     // bad
@@ -494,9 +496,9 @@
 
 **[⬆ 回到顶部](#table-of-contents)**
 
-## Callbacks
+## 回调函数(Callback)
 
-  - Always check for errors in callbacks
+  - 回调函数中永远先检查是否返回了错误.
 
   ```javascript
   //bad
@@ -537,7 +539,7 @@
   });
   ```
 
-  - Use descriptive arguments in your callback when it is an "interface" for others. It makes your code readable.
+  -当你的回调函数是其它部分的"接口”时,在回调函数中使用描述性的参数.这会让你的代码具有可读性.
 
   ```javascript
   // bad
@@ -563,12 +565,11 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Try catch
+## 抛/捕获异常(Try catch)
 
-- Only throw in synchronous functions
+- 只在同步函数内抛异常.
 
-  Try-catch blocks cannot be used to wrap async code. They will bubble up to the top, and bring
-  down the entire process.
+  Try-catch 块不能用来包裹异步代码.它们会冒泡到顶层,并且让这个进程崩溃.
 
   ```javascript
   //bad
@@ -591,7 +592,7 @@
   }
   ```
 
-- Catch errors in sync calls
+- 在同步代码中捕获异常.
 
   ```javascript
   //bad
@@ -609,7 +610,7 @@
 
 **[⬆ 回到顶部](#table-of-contents)**
 
-## Hoisting
+## 变量声明提升(Hoisting)
 
   - Variable declarations get hoisted to the top of their scope, their assignment does not.
 
