@@ -27,7 +27,7 @@
   1. [回调函数(callback)](#回调函数callback)
   1. [捕获异常(Try catch)](#捕获异常try-catch)
   1. [变量声明提升(Hoisting)](#变量声明提升hoisting)
-  1. [条件表达式 & 等号](#条件表达式-等号)
+  1. [条件表达式 & 等号](#条件表达式--等号)
   1. [块(Blocks)](#块blocks)
   1. [注释](#注释)
   1. [空白字符(Whitespace)](#空白字符whitespace)
