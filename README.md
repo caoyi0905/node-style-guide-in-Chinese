@@ -25,12 +25,12 @@
   1. [变量(Variables)](#变量variables)
   1. [引用(Requires)](#引用requires)
   1. [回调函数(callback)](#回调函数callback)
-  1. [抛/捕获异常(Try catch)](#抛捕获异常try-catch)
+  1. [捕获异常(Try catch)](#捕获异常try-catch)
   1. [变量声明提升(Hoisting)](#变量声明提升hoisting)
-  1. [Conditional Expressions & Equality](#conditional-expressions--equality)
-  1. [Blocks](#blocks)
-  1. [Comments](#comments)
-  1. [Whitespace](#whitespace)
+  1. [条件表达式 & 等号](#条件表达式-等号)
+  1. [块(Blocks)](#块blocks)
+  1. [注释](#注释)
+  1. [空白字符(Whitespace)](#空白字符whitespace)
   1. [Commas](#commas)
   1. [Semicolons](#semicolons)
   1. [Type Casting & Coercion](#type-casting--coercion)
@@ -565,7 +565,7 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## 抛/捕获异常(Try catch)
+## 捕获异常(Try catch)
 
 - 只在同步函数内抛异常.
 
@@ -612,27 +612,24 @@
 
 ## 变量声明提升(Hoisting)
 
-  - Variable declarations get hoisted to the top of their scope, their assignment does not.
+  - 变量的声明会提升到作用域的顶部,但是他们的赋值并不是.
 
     ```javascript
-    // we know this wouldn't work (assuming there
-    // is no notDefined global variable)
+    // 我们知道这事不会工作的. (这里假设
+    // notDefined不是全局变量)
     function example() {
       console.log(notDefined); // => throws a ReferenceError
     }
 
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
+    // 在你引用这个变量之后对变量声明,会导致变量声明提升.
+    // 注意赋的值`true`并没有提升.
     function example() {
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
     }
 
-    // The interpreter is hoisting the variable
-    // declaration to the top of the scope.
-    // Which means our example could be rewritten as:
+    // 解释器将变量声明提升到作用域的头部.
+    //这意味着我们的例子可以被改写成以下内容:
     function example() {
       var declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
@@ -640,7 +637,7 @@
     }
     ```
 
-  - Anonymous function expressions hoist their variable declaration, but not the function assignment.
+  - 匿名函数将它们的变量声明提升,但是函数赋值并没有提升.
 
     ```javascript
     function example() {
@@ -654,7 +651,7 @@
     }
     ```
 
-  - Named function expressions hoist the variable declaration, but neither the function declaration nor the function body.
+  - 命名函数提升他们的变量声明,但是函数声明和函数体并没有提升.
 
     ```javascript
     function example() {
@@ -682,7 +679,7 @@
     }
     ```
 
-  - Function declarations hoist their name and the function body.
+  - 函数声明会提升他们的名称和函数体.
 
     ```javascript
     function example() {
@@ -694,23 +691,23 @@
     }
     ```
 
-  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
+  - 详细信息请看 [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
 **[⬆ 回到顶部](#table-of-contents)**
 
 
 
-## Conditional Expressions & Equality
+## 条件表达式 & 等号
 
-  - Use `===` and `!==` over `==` and `!=`.
-  - Conditional expressions are evaluated using coercion with the `ToBoolean` method and always follow these simple rules:
+  - 使用 `===` 和 `!==` 来取代 `==` 和 `!=`.
+  - 条件表达式是使用强制使用`ToBoolean`方式来计算并且永远遵循以下简单规则:
 
-    + **Objects** evaluate to **true**
-    + **Undefined** evaluates to **false**
-    + **Null** evaluates to **false**
-    + **Booleans** evaluate to **the value of the boolean**
-    + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    + **Objects** 当作 **true**
+    + **Undefined** 当作 **false**
+    + **Null** 当作 **false**
+    + **Booleans** 当作 **the value of the boolean**
+    + **Numbers**  当 **+0, -0, or NaN**时当作 **false**, 否则 **true**
+    + **Strings** 如果是空字符串 `''`,当作 **false** , 否则 **true**
 
     ```javascript
     if ([0]) {
@@ -719,7 +716,7 @@
     }
     ```
 
-  - Use shortcuts.
+  - 使用简便写法.
 
     ```javascript
     // bad
@@ -743,14 +740,14 @@
     }
     ```
 
-  - For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
+  - 详细信息请看 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
 
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Blocks
+## 块(Blocks)
 
-  - Use braces with all multi-line blocks.
+  - 每个多行块都要使用花括号.
 
     ```javascript
     // bad
@@ -777,9 +774,9 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Comments
+## 注释
 
-  - Use `/** ... */` for multiline comments. Include a description, specify types and values for all parameters and return values.
+  - 多行注释使用 `/** ... */` .其中包含说明,表明每个参数和返回值的类型和值.
 
     ```javascript
     // bad
@@ -811,7 +808,7 @@
     }
     ```
 
-  - Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  - 单行注释使用 `//` . 在注释的上一行留一空行.
 
     ```javascript
     // bad
@@ -841,9 +838,9 @@
     }
     ```
 
-  - Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
+  - 给你的注释加上`FIXME`或`TODO`前缀,帮助其他开发者快速理解你之前指定的那些需要回顾的代码,或者你需要一个实现去解决某个问题.这个和其他的注释不同因为他们是有行为的(actionable). 这些行为是`FIXME -- need to figure this out` 或 `TODO -- need to implement`.
 
-  - Use `// FIXME:` to annotate problems
+  - 用`// FIXME:` 注释一个问题
 
     ```javascript
     function Calculator() {
@@ -855,7 +852,7 @@
     }
     ```
 
-  - Use `// TODO:` to annotate solutions to problems
+  - 用 `// TODO:` 注释一个解决办法
 
     ```javascript
     function Calculator() {
@@ -870,9 +867,9 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Whitespace
+## 空白字符(Whitespace)
 
-  - Use soft tabs set to 2 spaces
+  - 将tab设置为2个空格.
 
     ```javascript
     // bad
@@ -891,7 +888,7 @@
     }
     ```
 
-  - Place 1 space before the leading brace.
+  - 前花括号之前留一个空格.
 
     ```javascript
     // bad
@@ -917,7 +914,7 @@
     });
     ```
 
-  - Set off operators with spaces.
+  - 在操作符之间添加空格.
 
     ```javascript
     // bad
@@ -927,7 +924,7 @@
     var x = y + 5;
     ```
 
-  - End files with a single newline character.
+  - 文件末尾添加一个新空行.
 
     ```javascript
     // bad
@@ -951,7 +948,7 @@
     })(this);↵
     ```
 
-  - Use indentation when making long method chains.
+  - 很长的方法链(long method chains)时使用缩进.
 
     ```javascript
     // bad
