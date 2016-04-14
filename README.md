@@ -31,14 +31,14 @@
   1. [块(Blocks)](#块blocks)
   1. [注释](#注释)
   1. [空白字符(Whitespace)](#空白字符whitespace)
-  1. [Commas](#commas)
-  1. [Semicolons](#semicolons)
-  1. [Type Casting & Coercion](#type-casting--coercion)
-  1. [Naming Conventions](#naming-conventions)
-  1. [Accessors](#accessors)
-  1. [Constructors](#constructors)
-  1. [Contributors](#contributors)
-  1. [License](#license)
+  1. [逗号](#逗号)
+  1. [分号](#分号)
+  1. [类型分配&强制转换](#类型分配--强制转换)
+  1. [命名规范](#命名规范)
+  1. [存取器](#存取器)
+  1. [构造函数](#构造函数)
+  1. [贡献者](#贡献者)
+  1. [许可](#许可)
 
 ## 类型
 
@@ -869,7 +869,7 @@
 
 ## 空白字符(Whitespace)
 
-  - 将tab设置为2个空格.
+  - 使用软制表符设置2个空格.
 
     ```javascript
     // bad
@@ -981,9 +981,9 @@
 
 **[⬆ 回到顶部](#table-of-contents)**
 
-## Commas
+## 逗号
 
-  - Leading commas: **Nope.**
+  - **不要在最前面写逗号**
 
     ```javascript
     // bad
@@ -1003,7 +1003,7 @@
     };
     ```
 
-  - Additional trailing comma: **Nope.** This can cause problems with IE6/7 and IE9 if it's in quirksmode. Also, in some implementations of ES3 would add length to an array if it had an additional trailing comma. This was clarified in ES5 ([source](http://es5.github.io/#D)):
+  - 不要有多余逗号：这会在IE6、IE7和IE9的怪异模式中导致一些问题；同时，在ES3的一些实现中，多余的逗号会增加数组的长度。在ES5中已经澄清.[source](http://es5.github.io/#D)):
 
   > Edition 5 clarifies the fact that a trailing comma at the end of an ArrayInitialiser does not add to the length of the array. This is not a semantic change from Edition 3 but some implementations may have previously misinterpreted this.
 
@@ -1034,9 +1034,9 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Semicolons
+## 分号
 
-  - **Yup.**
+  - **这是需要的.**
 
     ```javascript
     // bad
@@ -1061,10 +1061,10 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Type Casting & Coercion
+## 类型分配&强制转换
 
-  - Perform type coercion at the beginning of the statement.
-  - Strings:
+  - 执行强制类型转换的语句。.
+  - 字符串:
 
     ```javascript
     //  => this.reviewScore = 9;
@@ -1082,7 +1082,7 @@
     var totalScore = this.reviewScore + ' total score';
     ```
 
-  - Use `parseInt` for Numbers and always with a radix for type casting.
+  - 使用parseInt对Numbers进行转换，并带一个进制作为参数.
 
     ```javascript
     var inputValue = '4';
@@ -1106,7 +1106,7 @@
     var val = parseInt(inputValue, 10);
     ```
 
-  - If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+  - 无论出于什么原因，或许你做了一些”粗野”的事；或许parseInt成了你的瓶颈；或许需要使用位运算来提高[性能](http://jsperf.com/coercion-vs-casting/3)，都要用注释说明你为什么这么做.
 
     ```javascript
     // good
@@ -1118,7 +1118,7 @@
     var val = inputValue >> 0;
     ```
 
-  - **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x4.3.19), but Bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - **注意:** 注意：当使用位运算时，Numbers被视为[64位值](http://es5.github.io/#x4.3.19)，但是位运算总是返回[32位整型](http://es5.github.io/#x11.7)。对于整型值大于32位的进行位运算将导致不可预见的行为。[Discussion](https://github.com/airbnb/javascript/issues/109).最大的有符号32位整数是2,147,483,647.
 
     ```javascript
     2147483647 >> 0 //=> 2147483647
@@ -1126,7 +1126,7 @@
     2147483649 >> 0 //=> -2147483647
     ```
 
-  - Booleans:
+  - 布尔值(Booleans):
 
     ```javascript
     var age = 0;
@@ -1144,9 +1144,9 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Naming Conventions
+## 命名规范
 
-  - Avoid single letter names. Be descriptive with your naming.
+  - 避免单个字符的字面量.请描述性地命名.
 
     ```javascript
     // bad
@@ -1160,7 +1160,7 @@
     }
     ```
 
-  - Use camelCase when naming objects, functions, and instances
+  - 当命名对象、函数和实例时使用骆驼拼写法.
 
     ```javascript
     // bad
@@ -1179,7 +1179,7 @@
     });
     ```
 
-  - Use PascalCase when naming constructors or classes
+  - 命名类或者构造函数时使用帕斯卡拼写法.
 
     ```javascript
     // bad
@@ -1201,7 +1201,7 @@
     });
     ```
 
-  - Use a leading underscore `_` when naming private properties
+  - 命名私有属性时使用`_`前缀.
 
     ```javascript
     // bad
@@ -1212,7 +1212,7 @@
     this._firstName = 'Panda';
     ```
 
-  - When saving a reference to `this` use `_this`.
+  - 保存`this`引用时使用`_this`.
 
     ```javascript
     // bad
@@ -1240,7 +1240,7 @@
     }
     ```
 
-  - Name your functions. This is helpful for stack traces.
+  - 对函数命名有利于堆栈跟踪.
 
     ```javascript
     // bad
@@ -1257,10 +1257,10 @@
 **[⬆ 回到顶部](#table-of-contents)**
 
 
-## Accessors
+## 存取器
 
-  - Accessor functions for properties are not required
-  - If you do make accessor functions use getVal() and setVal('hello')
+  - 对于属性,访问器函数不是必要的.
+  - 如果定义了存取器函数，应使用`getVal()` 和 `setVal(‘hello’)`的格式.
 
     ```javascript
     // bad
@@ -1276,7 +1276,7 @@
     dragon.setAge(25);
     ```
 
-  - If the property is a boolean, use isVal() or hasVal()
+  - 如果属性是布尔值(boolean),使用格式应该是`Val()` 和 `hasVal()`.
 
     ```javascript
     // bad
@@ -1290,7 +1290,7 @@
     }
     ```
 
-  - It's okay to create get() and set() functions, but be consistent.
+  - 创建`get()`和`set()`函数是可以的，但是要保持一致.
 
     ```javascript
     function Jedi(options) {
@@ -1310,9 +1310,9 @@
 
 **[⬆ 回到顶部](#table-of-contents)**
 
-## Constructors
+## 构造函数
 
-  - Assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
+  - 在原型对象上定义方法,而不是用新对象重写它.重写使继承变为不可能:重置原型将重写整个基类.
 
     ```javascript
     function Jedi() {
@@ -1340,7 +1340,7 @@
     };
     ```
 
-  - Methods can return `this` to help with method chaining.
+  - 方法应该返回this，有利于构成方法链.
 
     ```javascript
     // bad
@@ -1375,7 +1375,7 @@
     ```
 
 
-  - It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
+  - 写一个自定义的`toString()`方法是可以的，只要确保它能正常运行并且不会产生副作用.
 
     ```javascript
     function Jedi(options) {
@@ -1430,12 +1430,12 @@
 
   - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
 
-## Contributors
+## 贡献者
 
   - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
 
 
-## License
+## 许可
 
 (The MIT License)
 
